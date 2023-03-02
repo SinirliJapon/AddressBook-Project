@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Address</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #003049;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: #003049;
+        }
+
+        .topnav-right {
+            float: right;
+        }
+
+        .topnav-right a.address {
+            background-color: #D62828;
+            color: white;
+        }
+
+        .topnav-right a.address:hover {
+            background-color: #ddd;
+            color: #003049;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        input[type=text],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #D62828;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #d62845;
+        }
+
+        .form {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .area {
+            background-color: #f2f2f2;
+            padding: 20px;
+            width: 96%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="{{ url_for('show_all') }}">Home</a>
+        <a href="{{ url_for('show_new') }}">Add Address</a>
+        <a  href="/sort_by">Sort By Name</a>
+        <div class="topnav-right">
+            <a class="address" href="{{ url_for('show_all') }}">Address Book</a>
+        </div>
+    </div>
+
+    <div class="form">
+        <form method="POST" action="/update_addr">
+            <h3>Address Information</h3>
+            <input type="hidden" name="id" value="{{ address.id }}" />
+            Name<br>
+            <input type="text" name="name" value="{{ address.name }}" />
+            <br />
+            Address<br>
+            <textarea class="area" name="add">{{ address.addr }}</textarea><br>
+            City<br>
+            <input type="text" name="city" value="{{ address.city}}" /><br>
+            Postcode<br>
+            <input type="text" name="pin" value="{{ address.pin }}" /><br>
+            <input type="submit" value="Submit" /><br>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Adress Book</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #003049;
+        }
+
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: #003049;
+        }
+
+        .topnav-right {
+            float: right;
+        }
+
+        .topnav-right a.address {
+            background-color: #D62828;
+            color: white;
+        }
+
+        .topnav-right a.address:hover {
+            background-color: #ddd;
+            color: #003049;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        .sort {
+            float: right;
+            background-color: #D62828;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .add {
+            width: 100%;
+            background-color: #D62828;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .delete {
+            background-color: #D62828;
+            text-align: center;
+        }
+
+        .delete a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .update {
+            background-color: #003049;
+            text-align: center;
+        }
+
+        .update a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .title {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="{{ url_for('show_all') }}">Home</a>
+        <a href="{{ url_for('show_new') }}">Add Address</a>
+        <a href="/sort_by">Sort By Name</a>
+        <div class="topnav-right">
+            <a class="address" href="{{ url_for('show_all') }}">Address Book</a>
+        </div>
+    </div>
+
+    <h3 class="title">
+        Adress Book
+    </h3>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Postcode</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        {% for address in addresses %}
+        <tr>
+            <td>{{ address.name }}</td>
+            <td>{{ address.addr }}</td>
+            <td>{{ address.city }}</td>
+            <td>{{ address.pin }}</td>
+            <td class="delete"><a href="/delete_addr?id={{ address.id }}">Delete</a></td>
+            <td class="update"><a href="/show_update?id={{ address.id }}">Update</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

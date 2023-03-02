@@ -1,0 +1,7 @@
+a.	write "docker-compose up" to the folder's terminal
+b.	go to /localhost:5000 in your browser
+
+In this project we used all the CRUD functions, and also we added the sorting function.
+
+Mustafa Kemal ERYILMAZ, 39001, L3
+Mert Fatih Simsek, 39002, L3
